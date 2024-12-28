@@ -17,7 +17,7 @@ export const buildQrCode = async (request: Request, response: Response) => {
   // uiAmount: The amount of USDC to be transferred (if transferring 1 USDC, uiAmount should be "1")
   // inputMint: The mint address of the token that will be swapped for USDC
   const {recipient, uiAmount, inputMint} = request.query;
-  
+
   if (
     typeof recipient !== "string" ||
     typeof uiAmount !== "string" ||
@@ -41,7 +41,7 @@ export const buildQrCode = async (request: Request, response: Response) => {
 
   // Set response content type to PNG image
   response.set("Content-Type", "image/png");
-  
+
   // Generate and send the QR code
   // The QR code contains a solana: protocol URL that will open in mobile wallets
   // The width is set to 1024 pixels for high resolution
