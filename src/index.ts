@@ -2,9 +2,9 @@ import {onRequest} from "firebase-functions/v2/https";
 import {buildQrCode} from "./build-qr-code.js";
 import {handleGet, handlePost} from "./solana-pay.js";
 
-export const qr = onRequest(buildQrCode);
+export const qr = onRequest({cors: false}, buildQrCode);
 
-export const pay = onRequest(async (request, response) => {
+export const pay = onRequest({cors: false}, async (request, response) => {
   switch (request.method) {
   case "GET":
     return handleGet(response);
